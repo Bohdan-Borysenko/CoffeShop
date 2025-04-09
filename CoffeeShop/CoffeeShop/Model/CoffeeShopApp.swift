@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct CoffeeShopApp: App {
+    
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if hasSeenOnboarding {
+                MainTabView()
+            } else {
+                OnboardingView()
+            }
         }
     }
 }
